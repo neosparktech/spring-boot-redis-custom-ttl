@@ -4,13 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.neospark.service.RedisCacheService;
+import com.neospark.service.CacheService;
 
 @RestController
 public class Controller {
 	
 	@Autowired
-	RedisCacheService redisCacheService;
+	CacheService redisCacheService;
 
 	@GetMapping("/get/data")
 	public String getData() {

@@ -21,7 +21,7 @@ import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 import org.testcontainers.utility.DockerImageName;
 
-import com.neospark.service.RedisCacheService;
+import com.neospark.service.CacheService;
 import com.redis.testcontainers.RedisContainer;
 
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +32,7 @@ import lombok.extern.slf4j.Slf4j;
 public class RedisTestContainers {
 
 	@Autowired
-	private RedisCacheService redisCacheService;
+	private CacheService redisCacheService;
 
 	@Autowired
 	private RedisTemplate template;

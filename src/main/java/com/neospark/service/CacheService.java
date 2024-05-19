@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
-public class RedisCacheService {
+public class CacheService {
 	
     @Cacheable("default-cache")
     public String getData() {
