@@ -5,12 +5,17 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.concurrent.TimeUnit;
 
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.cache.CacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -28,17 +33,14 @@ import lombok.extern.slf4j.Slf4j;
 
 @Testcontainers
 @SpringBootTest
-@Slf4j
 public class RedisTestContainers {
 
 	@Autowired
 	private CacheService redisCacheService;
 
-	@Autowired
-	private RedisTemplate template;
 
 	@Autowired
-	private Environment env;
+	private RedisTemplate<String, ?> template;
 
 	@Container
 	private static final RedisContainer REDIS_CONTAINER = new RedisContainer(
@@ -66,4 +68,5 @@ public class RedisTestContainers {
 		assertEquals(redisCacheService.get20MinTTL(), "Hello World from 20m");
 		assertEquals(template.getExpire("20m-cache-ttl::somename",TimeUnit.MINUTES).longValue(), 19L);
 	}
+
 }
