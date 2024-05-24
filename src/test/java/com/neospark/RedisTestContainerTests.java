@@ -33,7 +33,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Testcontainers
 @SpringBootTest
-public class RedisTestContainers {
+public class RedisTestContainerTests {
 
 	@Autowired
 	private CacheService redisCacheService;
