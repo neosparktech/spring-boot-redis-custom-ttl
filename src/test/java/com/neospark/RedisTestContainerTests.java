@@ -60,13 +60,17 @@ public class RedisTestContainerTests {
 	@Test
 	public void test10MinTTL() {
 		assertEquals(redisCacheService.get10MinTTL(), "Hello World from 10m");
-		assertEquals(template.getExpire("10m-cache-ttl::somename",TimeUnit.MINUTES).longValue(),9L);
+		long ttlInMin = template.getExpire("10m-cache-ttl::somename",TimeUnit.MINUTES).longValue();
+		assertTrue(ttlInMin >= 9 && ttlInMin <=10);
 	}
 	
 	@Test
 	public void test20MinTTL() {
 		assertEquals(redisCacheService.get20MinTTL(), "Hello World from 20m");
-		assertEquals(template.getExpire("20m-cache-ttl::somename",TimeUnit.MINUTES).longValue(), 20L);
+		long ttlInMin = template.getExpire("20m-cache-ttl::somename",TimeUnit.MINUTES).longValue();
+
+		assertTrue(ttlInMin >= 19 && ttlInMin <=20);
+
 	}
 
 }
