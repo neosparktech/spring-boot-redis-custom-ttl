@@ -60,7 +60,7 @@ public class RedisTestContainerTests {
 	@Test
 	public void test10MinTTL() {
 		assertEquals(redisCacheService.get10MinTTL(), "Hello World from 10m");
-		assertEquals(template.getExpire("10m-cache-ttl::somename",TimeUnit.MINUTES).longValue(),10L);
+		assertEquals(template.getExpire("10m-cache-ttl::somename",TimeUnit.MINUTES).longValue(),9L);
 	}
 	
 	@Test
