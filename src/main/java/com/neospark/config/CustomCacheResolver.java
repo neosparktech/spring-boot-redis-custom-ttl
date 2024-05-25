@@ -74,8 +74,8 @@ public class CustomCacheResolver implements CacheResolver {
 		RedisCacheWriter cacheWriter = redisCache.getNativeCache();
 		RedisCacheConfiguration cacheConfig = RedisCacheConfiguration.defaultCacheConfig()
 				.entryTtl(Duration.ofMinutes(ttl));
-		CustomCache yoroCache = new CustomCache(cacheName, cacheWriter, cacheConfig);
-		return yoroCache;
+		CustomCache customCache = new CustomCache(cacheName, cacheWriter, cacheConfig);
+		return customCache;
 	}
 
 	private int namePartOfPrefix(String name) {
